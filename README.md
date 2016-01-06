@@ -7,6 +7,14 @@ Copyright &copy; 2015-1026, Sendyne Corp., New York, USA
 [Sendyne SFP products family](http://www.sendyne.com/Products/Sendyne%20Sensing%20Family.html)
 
 
+## Description
+Communication library for the Sendyne SFP100, SFP101 and the SFP102 sensing products.
+
+This library simplifies the implementation of the communication protocol with the SFP family. All values coming from the library are in HEX format and need processing to be human readable. It is the end users responsibility to ensure proper conversion methods are used for converting the values into usable format.
+
+For information on how to do this, refer to the module specific datasheet (can be found at [Sendyne SFP products family](http://www.sendyne.com/Products/Sendyne%20Sensing%20Family.html)).
+
+
 ## Requirements
 
 ### Supported platforms
