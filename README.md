@@ -46,3 +46,11 @@ In addition, as explained in the [FTDI Application Note AN_134](http://www.ftdic
 
 ## Example
 The file [main.c](main.c) illustrates the functionalities provided by the SFP10X_COM library.
+
+
+## License
+MIT License (see [LICENSE](LICENSE)).
+
+
+## Contributing
+Bug reports and pull requests welcome!
