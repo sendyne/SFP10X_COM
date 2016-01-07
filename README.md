@@ -46,10 +46,10 @@ A Windows module-definition file (SFP10X\_COM.def) is provided with the SFP10X_C
 ### Notes for OS X platforms
 Compilation on OS X platforms requires additional linking:
 
-* the user needs to link against the CoreFoundation and IOKit frameworks (`-framwork CoreFoundation -framework IOKit`),
+* the user needs to link against the CoreFoundation and IOKit frameworks (`-framework CoreFoundation -framework IOKit`),
 * the user needs to link against the libobjc library (`-lobjc`).
 
-In addition, as explained in the [FTDI Application Note AN_134](http://www.ftdichip.com/Support/Documents/AppNotes/AN_134_FTDI_Drivers_Installation_Guide_for_MAC_OSX.pdf) regarding the possible conflicts with Apple own FTDI driver, FTDI driver and the FTDI D2XX library. The user might need to manually unload kernel extensions for the SFP10X_COM library to work properly.
+In addition, as explained in the [FTDI Application Note AN_134](http://www.ftdichip.com/Support/Documents/AppNotes/AN_134_FTDI_Drivers_Installation_Guide_for_MAC_OSX.pdf) regarding the possible conflicts with Apple own FTDI driver, FTDI driver and the FTDI D2XX library, the user might need to manually unload kernel extensions for the SFP10X_COM library to work properly (see commands `kextstat` and `kextunload`).
 
 
 ## Example
