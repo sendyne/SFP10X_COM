@@ -24,7 +24,7 @@ The SFP10X_COM library is designed to be used on the following platforms:
 * Apple OS X (versions 10.9.X or above),
 * Linux Ubuntu and derivatives.
 
-### FTDI D2xx driver
+### FTDI D2XX driver
 The SFP10X_COM library requires a functional installation of the [FTDI D2XX](http://www.ftdichip.com/Drivers/D2XX.htm) driver library.
 
 Refer to [D2XX webpage](http://www.ftdichip.com/Drivers/D2XX.htm) for installation instructions and documentation.
