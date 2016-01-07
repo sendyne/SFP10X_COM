@@ -43,6 +43,8 @@ In both cases, the user needs to provide the location of the FTDI D2XX header fi
 ### Notes for Microsoft Windows platforms
 A Windows module-definition file (SFP10X\_COM.def) is provided with the SFP10X_COM library in order to properly build a DLL version of the library.
 
+A DLL and static version of SFP10X_COM library are provided in [compiled_win](compiled_win/).
+
 ### Notes for OS X platforms
 Compilation on OS X platforms requires additional linking:
 
