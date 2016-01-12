@@ -3,7 +3,7 @@ C library for FTDI-based serial communication with Sendyne's SFP products.
 Copyright &copy; 2015-2016, Sendyne Corp., New York, USA
 
 [Sendyne Corp.](http://sendyne.com)  
-[Email](mailto:infoi@sendyne.com)  
+[Email](mailto:info@sendyne.com)  
 [Sendyne SFP products family](http://www.sendyne.com/Products/Sendyne%20Sensing%20Family.html)
 
 
@@ -51,7 +51,7 @@ Compilation on OS X platforms requires additional linking:
 * the user needs to link against the CoreFoundation and IOKit frameworks (`-framework CoreFoundation -framework IOKit`),
 * the user needs to link against the libobjc library (`-lobjc`).
 
-In addition, as explained in the [FTDI Application Note AN_134](http://www.ftdichip.com/Support/Documents/AppNotes/AN_134_FTDI_Drivers_Installation_Guide_for_MAC_OSX.pdf) regarding the possible conflicts with Apple own FTDI driver, FTDI driver and the FTDI D2XX library, the user might need to manually unload kernel extensions for the SFP10X_COM library to work properly (see commands `kextstat` and `kextunload`).
+In addition, as explained in the [FTDI Application Note AN_134](http://www.ftdichip.com/Support/Documents/AppNotes/AN_134_FTDI_Drivers_Installation_Guide_for_MAC_OSX.pdf) regarding the possible conflicts with Apple's own FTDI driver, FTDI driver and the FTDI D2XX library, the user might need to manually unload kernel extensions for the SFP10X_COM library to work properly (see commands `kextstat` and `kextunload`).
 
 
 ## Example
