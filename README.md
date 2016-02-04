@@ -67,9 +67,7 @@ Compilation on OS X platforms requires additional linking:
   (`-framework CoreFoundation -framework IOKit`),
 * the user needs to link against the libobjc library (`-lobjc`).
 
-In addition, as explained in the [FTDI Application Note AN_134](http://www.ftd
-ichip.com/Support/Documents/AppNotes/AN_134_FTDI_Drivers_Installation_Guide_fo
-r_MAC_OSX.pdf) regarding the possible conflicts with Apple's own FTDI driver,
+In addition, as explained in the [FTDI Application Note AN_134](http://www.ftdichip.com/Support/Documents/AppNotesAN_134_FTDI_Drivers_Installation_Guide_for_MAC_OSX.pdf) regarding the possible conflicts with Apple's own FTDI driver,
 FTDI driver and the FTDI D2XX library, the user might need to manually unload
 kernel extensions for the SFP10X_COM library to work properly (see commands
 `kextstat` and `kextunload`).
