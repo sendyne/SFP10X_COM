@@ -4,7 +4,7 @@ Copyright &copy; 2015-2016, Sendyne Corp., New York, USA
 
 [Sendyne Corp.](http://sendyne.com)  
 [Email](mailto:info@sendyne.com)  
-[Sendyne SFP products family](http://www.sendyne.com/Products/Sendyne%20Sensing%20Family.html)
+[Sendyne SFP products family][sfp_page]
 
 
 ## Description
@@ -13,13 +13,11 @@ products.
 
 This library simplifies the implementation of the communication protocol with
 the SFP family. All values coming from the library are in HEX format and need
-processing to be human readable. It is the end users responsibility to ensure
-proper conversion methods are used for converting the values into usable
-format.
+processing to be human readable. A helper function is provided to take care of
+the conversion of HEX data.
 
-For information on how to do this, refer to the module specific datasheet (can
-be found at [Sendyne SFP products
-family](http://www.sendyne.com/Products/Sendyne%20Sensing%20Family.html)).
+For more information, refer to the module specific datasheet (can be found at
+[Sendyne SFP products family][sfp_page]).
 
 
 ## Requirements
@@ -32,11 +30,21 @@ The SFP10X_COM library is designed to be used on the following platforms:
 * Linux Ubuntu and derivatives.
 
 ### FTDI D2XX driver
-The SFP10X_COM library requires a functional installation of the [FTDI
-D2XX](http://www.ftdichip.com/Drivers/D2XX.htm) driver library.
+The SFP10X_COM library requires a functional installation of the
+[FTDI D2XX][ftdi_d2xx_link] driver library.
 
-Refer to [D2XX webpage](http://www.ftdichip.com/Drivers/D2XX.htm) for
-installation instructions and documentation.
+Refer to [D2XX webpage][ftdi_d2xx_link] for installation instructions and
+documentation.
+
+Note that, on OS X and Linux platforms the FTDI D2XX library has special
+requirements to operate properly; see the following documentation:
+
+* [OS X D2XX installation guide][ftdi_mac_an],
+* [Linux D2XX installation guide][ftdi_linux_an].
+
+We recommend that, prior to using the SFP10X_COM library, the user check its
+FTDI D2XX installation by compiling and running the examples shipped with the
+D2XX library.
 
 
 ## Compilation
@@ -67,10 +75,22 @@ Compilation on OS X platforms requires additional linking:
   (`-framework CoreFoundation -framework IOKit`),
 * the user needs to link against the libobjc library (`-lobjc`).
 
-In addition, as explained in the [FTDI Application Note AN_134](http://www.ftdichip.com/Support/Documents/AppNotes/AN_134_FTDI_Drivers_Installation_Guide_for_MAC_OSX.pdf) regarding the possible conflicts with Apple's own FTDI driver,
-FTDI driver and the FTDI D2XX library, the user might need to manually unload
-kernel extensions for the SFP10X_COM library to work properly (see commands
+In addition, as explained in the [FTDI Application Note AN_134][ftdi_mac_an]
+regarding the possible conflicts with Apple's own FTDI driver, FTDI driver and
+the FTDI D2XX library, the user might need to manually unload kernel
+extensions for the SFP10X_COM library to work properly (see commands
 `kextstat` and `kextunload`).
+
+### Notes for Linux platforms
+Compilation on Linux platforms requires additional linking:
+
+* the user needs to link against pthread and dl libraries (`-lpthread -ldl`).
+
+In addition, similar to OS X platforms, some kernel modules need to unloaded
+to allow the FTDI D2XX library to bind to the device. Those kernel modules are
+`ftdi_sio` and `usbserial`. Refer to the
+[FTDI D2XXdocumentation][ftdi_linux_an] for more details. Finally, executables
+should be run with elevated privileges (using the `sudo` command).
 
 ### C# wrapper ###
 A [C# wrapper](CSharp_wrapper/) for the SFP10X_COM library is also provided to
@@ -88,3 +108,9 @@ MIT License (see [LICENSE](LICENSE)).
 
 ## Contributing
 Bug reports and pull requests welcome!
+
+[sfp_page]: http://www.sendyne.com/Products/Sendyne%20Sensing%20Family.html
+[ftdi_d2xx_link]: http://www.ftdichip.com/Drivers/D2XX.htm
+[ftdi_mac_an]: http://www.ftdichip.com/Support/Documents/AppNotes/AN_134_FTDI_Drivers_Installation_Guide_for_MAC_OSX.pdf
+[ftdi_linux_an]: http://www.ftdichip.com/Support/Documents/AppNotes/AN_220_FTDI_Drivers_Installation_Guide_for_Linux%20.pdf
+
