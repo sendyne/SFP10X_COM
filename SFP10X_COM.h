@@ -79,9 +79,7 @@ enum Status
                             // time frame.
     DEVICE_BUSY,		// 0x0A - The requested device is taken or in an 
                             // unknown state.
-    FT_LIST_FAIL,		// 0x0B - Failed getting the number of devices
-                            // connected to the system.
-    MEM_FAIL            // 0x0C - Memory allocation error.
+    MEM_FAIL            // 0x0B - Memory allocation error.
 };
 
 
@@ -132,7 +130,7 @@ byte Initialize(int device_num, SFPDevice * sfp_dev);
 
 /** Changes the timeout time for write and read to and from the device. 
  *
- *	Accepts         SFPDevice structure and new timeout value in milliseconds.
+ *	Accepts         SFPDevice pointer and new timeout value in milliseconds.
  *
  *	time_ms         is new timeout in milliseconds.
  *
@@ -142,12 +140,12 @@ byte Initialize(int device_num, SFPDevice * sfp_dev);
  *	or decreased. Be mindful that if the timeout is too low, the data
  *	might never be sent/read properly.
  */
-byte ChangeTimeout(SFPDevice device, int time_ms);
+byte ChangeTimeout(SFPDevice * device, int time_ms);
 
 
 /** Reads data from a specific register on the SFP module.
  *
- *	Accepts         SFPDevice structure, register address, number of bytes
+ *	Accepts         SFPDevice pointer, register address, number of bytes
  *                  requested, and a char array.
  *
  *	SFP_reg_address SFP register address to be passed-in. The register addresses
@@ -160,15 +158,34 @@ byte ChangeTimeout(SFPDevice device, int time_ms);
  *
  *	Returns         status flag.
  */
-byte ReadRegister(SFPDevice device,
+byte ReadRegister(SFPDevice * device,
                   byte SFP_reg_address,
                   byte number_of_bytes,
                   char * const data);
 
 
+/** Reads data from a specific register on the SFP module with conversion.
+*
+*	Accepts         SFPDevice pointer, register address and number of bytes
+*                   requested.
+*
+*	SFP_reg_address SFP register address to be passed-in. The register addresses
+*                   are to be taken from the datasheet for the module.
+*
+*	number_of_bytes the number of bytes to be requested from the SFP module, the
+*                   definitions can be found under the DataLength enum.
+*
+*	Returns         Signed data, in counts.
+*/
+byte ReadSignedRegister(SFPDevice * device,
+                        byte SFP_reg_address,
+                        byte number_of_bytes,
+                        long long * signed_data);
+
+
 /** Writes to a specific register on the SFP module.
  *
- *	Accepts         SFPDevice structure, register address, number of bytes
+ *	Accepts         SFPDevice pointer, register address, number of bytes
  *                  requested, and a chara array with data to be written to the
  *                  specified register.
  *
@@ -182,7 +199,7 @@ byte ReadRegister(SFPDevice device,
  *
  *	Returns         status flag.
  */
-byte WriteRegister(SFPDevice device,
+byte WriteRegister(SFPDevice * device,
                    byte SFP_reg_address,
                    byte number_of_bytes,
                    char * const data);
@@ -190,19 +207,19 @@ byte WriteRegister(SFPDevice device,
 
 /** Changes the baudrate on the host and on the SFP module.
  *
- *	Accepts         SFPDevice structure and new baudrate.
+ *	Accepts         SFPDevice pointer and new baudrate.
  *
  *	baud_rate       requested baudrate passed in as HEX. Definitions can
  *                  be found under the Baudrate enum.
  *
  *	Returns         status flag.
  */
-byte ChangeBaudRate(SFPDevice device, byte baud_rate);
+byte ChangeBaudRate(SFPDevice * device, byte baud_rate);
 
 
 /** Changes only the baud rate of the host.
  *
- *	Accepts         SFPDevice structure and new baudrate.
+ *	Accepts         SFPDevice pointer and new baudrate.
  *
  *	baud_rate       requested baudrate passed in as HEX. Definitions can be
  *                  found under the Baudrate enum.
@@ -213,23 +230,23 @@ byte ChangeBaudRate(SFPDevice device, byte baud_rate);
  *	SFP module is running on a non-default rate. This allows for the SFP
  *	module to be "recovered" without resetting it.
  */
-byte ChangeOnlyHostBaudRate(SFPDevice device, byte baud_rate);
+byte ChangeOnlyHostBaudRate(SFPDevice * device, byte baud_rate);
 
 
 /** Closes the open port.
  *
- *	Accepts         SFPDevice structure.
+ *	Accepts         SFPDevice pointer.
  *
  *	Returns         status flag.
  *
  *  If a port is open, it closes it, else it does nothing and returns an error.
  */
-byte ClosePort(SFPDevice device);
+byte ClosePort(SFPDevice * device);
 
 
 /** Gets the number of FTDI devices available on the host.
  *
- *	Returns         number of devices.
+ *	Returns         number of devices or -1 if an error occured. 
  *
  *  Querries the FTDI drivers for the number of FTDI devices connected to the
  *  system.
@@ -250,7 +267,7 @@ int GetFTDIDeviceCount();
  *                  If busy - returns busy else returns serial number of the
  *                  device as an array of characters.
  *
- *  Returns         status flag.
+ *  Returns         status flag. 
  *
  */
 byte GetFTDIDeviceInfo(int device_num, char *  buffer);
