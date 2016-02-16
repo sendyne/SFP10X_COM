@@ -49,40 +49,47 @@ namespace SFP10X_wrapper
 
         // ChangeTimeout 
         [DllImport("SFP10X_COM.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ChangeTimeout(SFPDevice device, int time_ms);
+        public static extern byte ChangeTimeout(ref SFPDevice device, int time_ms);
 
         // ReadRegister  
         [DllImport("SFP10X_COM.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ReadRegister(SFPDevice device,
+        public static extern byte ReadRegister(ref SFPDevice device,
                                                     byte SFP_reg_address,
                                                     byte number_of_bytes,
                                                     [MarshalAs(UnmanagedType.LPArray, SizeConst = 10)] byte[] data);
 
+        // ReadSignedRegister  
+        [DllImport("SFP10X_COM.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern byte ReadSignedRegister(ref SFPDevice device,
+                                                    byte SFP_reg_address,
+                                                    byte number_of_bytes,
+                                                    ref long data);
+
         // WriteRegister
         [DllImport("SFP10X_COM.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte WriteRegister(SFPDevice device,
+        public static extern byte WriteRegister(ref SFPDevice device,
                                                     byte SFP_reg_address,
                                                     byte number_of_bytes,
                                                     [MarshalAs(UnmanagedType.LPArray, SizeConst = 10)] byte[] data);
 
         // ChangeBaudRate
         [DllImport("SFP10X_COM.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ChangeBaudRate(SFPDevice device, byte baud_rate);
+        public static extern byte ChangeBaudRate(ref SFPDevice device, byte baud_rate);
 
         // ChangeOnlyHostBaudRate
         [DllImport("SFP10X_COM.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ChangeOnlyHostBaudRate(SFPDevice device, byte baud_rate);
+        public static extern byte ChangeOnlyHostBaudRate(ref SFPDevice device, byte baud_rate);
 
         // ClosePort  
         [DllImport("SFP10X_COM.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ClosePort(SFPDevice device);
+        public static extern byte ClosePort(ref SFPDevice device);
 
         // GetFTDIDeviceCount 
         [DllImport("SFP10X_COM.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int GetFTDIDeviceCount();
 
         // GetFTDIDeviceInfo 
-        // Note: StringBuilder is used in order to simplify display the returned string
+        // Note: StringBuilder is used in order to simplify displaying the returned string
         [DllImport("SFP10X_COM.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern byte GetFTDIDeviceInfo(int device_num, StringBuilder buffer);
     }
