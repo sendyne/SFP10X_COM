@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SFP10X_COM by sendyne</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>SFP10X_COM</h1>
+        <p>C library for FTDI-based serial communication with Sendyne&#39;s SFP products.</p>
+
+        <p class="view"><a href="https://github.com/sendyne/SFP10X_COM">View the Project on GitHub <small>sendyne/SFP10X_COM</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/sendyne/SFP10X_COM/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/sendyne/SFP10X_COM/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/sendyne/SFP10X_COM">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="sfp10x_com" class="anchor" href="#sfp10x_com" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SFP10X_COM</h1>
+
+<p>C library for FTDI-based serial communication with Sendyne's SFP products.<br>
+Copyright © 2015-2016, Sendyne Corp., New York, USA</p>
+
+<p><a href="http://sendyne.com">Sendyne Corp.</a><br>
+<a href="mailto:info@sendyne.com">Email</a><br>
+<a href="http://www.sendyne.com/Products/Sendyne%20Sensing%20Family.html">Sendyne SFP products family</a></p>
+
+<h2>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h2>
+
+<p>Communication library for the Sendyne SFP100, SFP101 and the SFP102 sensing
+products.</p>
+
+<p>This library simplifies the implementation of the communication protocol with
+the SFP family. All values coming from the library are in HEX format and need
+processing to be human readable. A helper function is provided to take care of
+the conversion of HEX data.</p>
+
+<p>For more information, refer to the module specific datasheet (can be found at
+<a href="http://www.sendyne.com/Products/Sendyne%20Sensing%20Family.html">Sendyne SFP products family</a>).</p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<h3>
+<a id="supported-platforms" class="anchor" href="#supported-platforms" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported platforms</h3>
+
+<p>The SFP10X_COM library is designed to be used on the following platforms:</p>
+
+<ul>
+<li>Microsoft Windows (XP or above),</li>
+<li>Apple OS X (versions 10.9.X or above),</li>
+<li>Linux Ubuntu and derivatives.</li>
+</ul>
+
+<h3>
+<a id="ftdi-d2xx-driver" class="anchor" href="#ftdi-d2xx-driver" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FTDI D2XX driver</h3>
+
+<p>The SFP10X_COM library requires a functional installation of the
+<a href="http://www.ftdichip.com/Drivers/D2XX.htm">FTDI D2XX</a> driver library.</p>
+
+<p>Refer to <a href="http://www.ftdichip.com/Drivers/D2XX.htm">D2XX webpage</a> for installation instructions and
+documentation.</p>
+
+<p>Note that, on OS X and Linux platforms the FTDI D2XX library has special
+requirements to operate properly; see the following documentation:</p>
+
+<ul>
+<li>
+<a href="http://www.ftdichip.com/Support/Documents/AppNotes/AN_134_FTDI_Drivers_Installation_Guide_for_MAC_OSX.pdf">OS X D2XX installation guide</a>,</li>
+<li>
+<a href="http://www.ftdichip.com/Support/Documents/AppNotes/AN_220_FTDI_Drivers_Installation_Guide_for_Linux%20.pdf">Linux D2XX installation guide</a>.</li>
+</ul>
+
+<p>We recommend that, prior to using the SFP10X_COM library, the user check its
+FTDI D2XX installation by compiling and running the examples shipped with the
+D2XX library.</p>
+
+<h2>
+<a id="compilation" class="anchor" href="#compilation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compilation</h2>
+
+<p>SFP10X_COM is pure C and should compile with most available compilers (Visual
+Studio, GCC, Clang, ...).</p>
+
+<p>The SFP10X_COM library can be used in two ways:</p>
+
+<ul>
+<li>by adding the header and source file to the user project and including them
+in the build process,</li>
+<li>by building a library and linking the user project against it.</li>
+</ul>
+
+<p>In both cases, the user needs to provide the location of the FTDI D2XX header
+files, and to link against the FTDX D2XX library (either statically or
+dynamically).</p>
+
+<h3>
+<a id="notes-for-microsoft-windows-platforms" class="anchor" href="#notes-for-microsoft-windows-platforms" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notes for Microsoft Windows platforms</h3>
+
+<p>A Windows module-definition file (SFP10X_COM.def) is provided with the
+SFP10X_COM library in order to properly build a DLL version of the library.</p>
+
+<p>A DLL and static version of SFP10X_COM library are provided in
+<a href="compiled_win/">compiled_win</a>.</p>
+
+<h3>
+<a id="notes-for-os-x-platforms" class="anchor" href="#notes-for-os-x-platforms" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notes for OS X platforms</h3>
+
+<p>Compilation on OS X platforms requires additional linking:</p>
+
+<ul>
+<li>the user needs to link against the CoreFoundation and IOKit frameworks
+(<code>-framework CoreFoundation -framework IOKit</code>),</li>
+<li>the user needs to link against the libobjc library (<code>-lobjc</code>).</li>
+</ul>
+
+<p>In addition, as explained in the <a href="http://www.ftdichip.com/Support/Documents/AppNotes/AN_134_FTDI_Drivers_Installation_Guide_for_MAC_OSX.pdf">FTDI Application Note AN_134</a>
+regarding the possible conflicts with Apple's own FTDI driver, FTDI driver and
+the FTDI D2XX library, the user might need to manually unload kernel
+extensions for the SFP10X_COM library to work properly (see commands
+<code>kextstat</code> and <code>kextunload</code>).</p>
+
+<h3>
+<a id="notes-for-linux-platforms" class="anchor" href="#notes-for-linux-platforms" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notes for Linux platforms</h3>
+
+<p>Compilation on Linux platforms requires additional linking:</p>
+
+<ul>
+<li>the user needs to link against pthread and dl libraries (<code>-lpthread -ldl</code>).</li>
+</ul>
+
+<p>In addition, similar to OS X platforms, some kernel modules need to unloaded
+to allow the FTDI D2XX library to bind to the device. Those kernel modules are
+<code>ftdi_sio</code> and <code>usbserial</code>. Refer to the
+<a href="http://www.ftdichip.com/Support/Documents/AppNotes/AN_220_FTDI_Drivers_Installation_Guide_for_Linux%20.pdf">FTDI D2XXdocumentation</a> for more details. Finally, executables
+should be run with elevated privileges (using the <code>sudo</code> command).</p>
+
+<h3>
+<a id="c-wrapper" class="anchor" href="#c-wrapper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>C# wrapper</h3>
+
+<p>A <a href="CSharp_wrapper/">C# wrapper</a> for the SFP10X_COM library is also provided to
+facilitate integration with Visual C# and .NET projects.</p>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h2>
+
+<p>The file <a href="main.c">main.c</a> illustrates the functionalities provided by the
+SFP10X_COM library.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT License (see <a href="LICENSE">LICENSE</a>).</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Bug reports and pull requests welcome!</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/sendyne">sendyne</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
