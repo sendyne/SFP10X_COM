@@ -8,7 +8,7 @@ Copyright &copy; 2010-2016, Sendyne Corp., New York, USA
 
 
 ## Description
-Communication library for the Sendyne SFP100, SFP101 and the SFP102 sensing
+Communication library for the Sendyne Signature Series, SFP101 and the SFP102 sensing
 products.
 
 This library simplifies the implementation of the communication protocol with
