@@ -1,5 +1,5 @@
 # SFP10X_COM
-C library for FTDI-based serial communication with Sendyne's SFP products.  
+C library for FTDI-based serial communication with Sendyne's Sensing Family products.  
 Copyright &copy; 2010-2016, Sendyne Corp., New York, USA
 
 [Sendyne Corp.](http://sendyne.com)  
