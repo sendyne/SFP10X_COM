@@ -19,6 +19,8 @@ the conversion of HEX data.
 For more information, refer to the module specific datasheet (can be found at
 [Sendyne SFP products family][sfp_page]).
 
+Take a look at our [videos on using the SFP10X_COM library in NI LabView](https://www.youtube.com/playlist?list=PL2tMAX1cpLJu92bLrU1GD6hDbyyS_E2VL).
+
 
 ## Requirements
 
