@@ -8,18 +8,27 @@ Copyright &copy; 2010-2016, Sendyne Corp., New York, USA
 
 
 ## Description
-Communication library for the Sendyne Signature Series, SFP101 and the SFP102 sensing
-products.
+Communication library for the Sendyne Signature Series, SFP101 and the SFP102 sensing products.
 
 This library simplifies the implementation of the communication protocol with
-the SFP family. All values coming from the library are in HEX format and need
-processing to be human readable. A helper function is provided to take care of
+the SFP family. All values coming from the library are in HEX format and need processing to be human readable. A helper function is provided to take care of
 the conversion of HEX data.
 
 For more information, refer to the module specific datasheet (can be found at
 [Sendyne SFP products family][sfp_page]).
 
 Take a look at our [videos on using the SFP10X_COM library in NI LabView](https://www.youtube.com/playlist?list=PL2tMAX1cpLJu92bLrU1GD6hDbyyS_E2VL).
+
+### List of supported products
+The following products are supported by the SFP10X_COM library:
+​​* SFP100
+* SFP100EVB
+* SFP101
+* SFP101EVB
+* SFP101EVB-LAB
+* SFP101EVB-LAB-25
+* SFP102
+* SFP102MOD
 
 
 ## Requirements
@@ -100,8 +109,7 @@ facilitate integration with Visual C# and .NET projects.
 
 
 ## Example
-The file [main.c](main.c) illustrates the functionalities provided by the
-SFP10X_COM library.
+The file [main.c](main.c) illustrates the functionalities provided by the SFP10X_COM library.
 
 
 ## License
