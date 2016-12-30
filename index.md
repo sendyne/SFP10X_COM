@@ -1,37 +1,126 @@
-## Welcome to GitHub Pages
+# SFP10X_COM
+C library for FTDI-based serial communication with Sendyne's Sensing Family products.  
+Copyright &copy; 2010-2016, Sendyne Corp., New York, USA
 
-You can use the [editor on GitHub](https://github.com/sendyne/SFP10X_COM/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+[Sendyne Corp.](http://sendyne.com)  
+[Email](mailto:info@sendyne.com)  
+[Sendyne SFP products family][sfp_page]
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+## Description
+Communication library for the Sendyne Signature Series, SFP101 and the SFP102 sensing products.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This library simplifies the implementation of the communication protocol with
+the SFP family. All values coming from the library are in HEX format and need processing to be human readable. A helper function is provided to take care of
+the conversion of HEX data.
 
-```markdown
-Syntax highlighted code block
+For more information, refer to the module specific datasheet (can be found at
+[Sendyne SFP products family][sfp_page]).
 
-# Header 1
-## Header 2
-### Header 3
+Take a look at our [videos on using the SFP10X_COM library in NI LabView](https://www.youtube.com/playlist?list=PL2tMAX1cpLJu92bLrU1GD6hDbyyS_E2VL).
 
-- Bulleted
-- List
+### List of supported products
+The following products are supported by the SFP10X_COM library:
 
-1. Numbered
-2. List
+- SFP100
+- SFP100EVB
+- SFP101
+- SFP101EVB
+- SFP101EVB-LAB
+- SFP101EVB-LAB-25
+- SFP102
+- SFP102MOD
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+## Requirements
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Supported platforms
+The SFP10X_COM library is designed to be used on the following platforms:
 
-### Jekyll Themes
+* Microsoft Windows (XP or above),
+* Apple OS X (versions 10.9.X or above),
+* Linux Ubuntu and derivatives.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sendyne/SFP10X_COM/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### FTDI D2XX driver
+The SFP10X_COM library requires a functional installation of the
+[FTDI D2XX][ftdi_d2xx_link] driver library.
 
-### Support or Contact
+Refer to [D2XX webpage][ftdi_d2xx_link] for installation instructions and
+documentation.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Note that, on OS X and Linux platforms the FTDI D2XX library has special
+requirements to operate properly; see the following documentation:
+
+* [OS X D2XX installation guide][ftdi_mac_an],
+* [Linux D2XX installation guide][ftdi_linux_an].
+
+We recommend that, prior to using the SFP10X_COM library, the user check its
+FTDI D2XX installation by compiling and running the examples shipped with the
+D2XX library.
+
+
+## Compilation
+SFP10X_COM is pure C and should compile with most available compilers (Visual
+Studio, GCC, Clang, ...).
+
+The SFP10X_COM library can be used in two ways:
+
+* by adding the header and source file to the user project and including them
+  in the build process,
+* by building a library and linking the user project against it.
+
+In both cases, the user needs to provide the location of the FTDI D2XX header
+files, and to link against the FTDX D2XX library (either statically or
+dynamically).
+
+### Notes for Microsoft Windows platforms
+A Windows module-definition file (SFP10X\_COM.def) is provided with the
+SFP10X_COM library in order to properly build a DLL version of the library.
+
+A DLL and static version of SFP10X_COM library are provided in
+[compiled_win](https://github.com/sendyne/SFP10X_COM/tree/master/compiled_win/).
+
+### Notes for OS X platforms
+Compilation on OS X platforms requires additional linking:
+
+* the user needs to link against the CoreFoundation and IOKit frameworks
+  (`-framework CoreFoundation -framework IOKit`),
+* the user needs to link against the libobjc library (`-lobjc`).
+
+In addition, as explained in the [FTDI Application Note AN_134][ftdi_mac_an]
+regarding the possible conflicts with Apple's own FTDI driver, FTDI driver and
+the FTDI D2XX library, the user might need to manually unload kernel
+extensions for the SFP10X_COM library to work properly (see commands
+`kextstat` and `kextunload`).
+
+### Notes for Linux platforms
+Compilation on Linux platforms requires additional linking:
+
+* the user needs to link against pthread and dl libraries (`-lpthread -ldl`).
+
+In addition, similar to OS X platforms, some kernel modules need to unloaded
+to allow the FTDI D2XX library to bind to the device. Those kernel modules are
+`ftdi_sio` and `usbserial`. Refer to the
+[FTDI D2XXdocumentation][ftdi_linux_an] for more details. Finally, executables
+should be run with elevated privileges (using the `sudo` command).
+
+### C# wrapper ###
+A [C# wrapper](https://github.com/sendyne/SFP10X_COM/tree/master/CSharp_wrapper/) for the SFP10X_COM library is also provided to facilitate integration with Visual C# and .NET projects.
+
+
+## Example
+The file [main.c](https://github.com/sendyne/SFP10X_COM/tree/master/main.c) illustrates the functionalities provided by the SFP10X_COM library.
+
+
+## License
+MIT License (see [LICENSE](https://github.com/sendyne/SFP10X_COM/tree/master/LICENSE)).
+
+
+## Contributing
+Bug reports and pull requests welcome!
+
+[sfp_page]: http://www.sendyne.com/Products/Sendyne%20Sensing%20Family.html
+[ftdi_d2xx_link]: http://www.ftdichip.com/Drivers/D2XX.htm
+[ftdi_mac_an]: http://www.ftdichip.com/Support/Documents/AppNotes/AN_134_FTDI_Drivers_Installation_Guide_for_MAC_OSX.pdf
+[ftdi_linux_an]: http://www.ftdichip.com/Support/Documents/AppNotes/AN_220_FTDI_Drivers_Installation_Guide_for_Linux%20.pdf
+
