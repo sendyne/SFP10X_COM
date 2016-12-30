@@ -21,14 +21,15 @@ Take a look at our [videos on using the SFP10X_COM library in NI LabView](https:
 
 ### List of supported products
 The following products are supported by the SFP10X_COM library:
-​​* SFP100
-* SFP100EVB
-* SFP101
-* SFP101EVB
-* SFP101EVB-LAB
-* SFP101EVB-LAB-25
-* SFP102
-* SFP102MOD
+
+​​    * SFP100
+    * SFP100EVB
+    * SFP101
+    * SFP101EVB
+    * SFP101EVB-LAB
+    * SFP101EVB-LAB-25
+    * SFP102
+    * SFP102MOD
 
 
 ## Requirements
