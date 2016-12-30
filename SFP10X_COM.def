@@ -1,0 +1,17 @@
+; Windows module-definition file for Sendyne SFP10X_COM library
+; Copyright 2015-2016, Sendyne Corp.
+;
+LIBRARY SFP10X_COM
+DESCRIPTION "Serial communication library for Sendyne SFP10X family."
+EXPORTS
+Initialize @1
+ChangeTimeout @2
+ReadRegister @3
+ReadSignedRegister @4
+WriteRegister @5
+ChangeBaudRate @6
+ChangeOnlyHostBaudRate @7
+ClosePort @8
+GetFTDIDeviceCount @9
+GetFTDIDeviceInfo @10
+FlagLookup @11
